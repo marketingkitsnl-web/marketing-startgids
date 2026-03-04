@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketingkits.nl – Marketingkits voor startende zzp’ers</title>
+  <meta name="description" content="Marketingkits.nl helpt startende zzp’ers om binnen één dag een complete marketingbasis te hebben met kant-en-klare content, templates en workflows." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-light: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+      --radius: 10px;
+      --max-width: 1100px;
+      --shadow-soft: 0 18px 45px rgba(15,23,42,0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 20% 0, #38bdf8, #0ea5e9 40%, #0369a1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b1120;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 10px 30px rgba(56,189,248,0.5);
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    .badge span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 4vw, 40px);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-bottom: 22px;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1;
+      margin-top: -1px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: 0 14px 35px rgba(56,189,248,0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 45px rgba(56,189,248,0.6);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 70%);
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.18), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .tagline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+    }
+
+    .pill.accent {
+      background: var(--accent-soft);
+      border-color: rgba(56,189,248,0.7);
+      color: var(--accent);
+    }
+
+    .lead-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.95);
+      border: 1px dashed rgba(148,163,184,0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lead-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 100% 0, rgba(56,189,248,0.18), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .lead-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .lead-text {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .lead-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .lead-form input {
+      flex: 1 1 160px;
+      min-width: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.95);
+      color: var(--text);
+      font-size: 12px;
+      padding: 8px 11px;
+      outline: none;
+    }
+
+    .lead-form input::placeholder {
+      color: #6b7280;
+    }
+
+    .lead-form button {
+      font-size: 12px;
+      padding: 8px 14px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 800px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: rgba(15,23,42,0.95);
+      border-radius: 14px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .badge-small {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .price-card {
+      background: rgba(15,23,42,0.98);
+      border-radius: 16px;
+      padding: 16px 16px 18px;
+      border: 1px solid rgba(56,189,248,0.6);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+    }
+
+    .price-tag {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .price-tag span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .checklist {
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .checklist li {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      color: var(--accent);
+      font-size: 13px;
+      margin-top: 1px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.9);
+      margin-top: 30px;
+      padding-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .social a {
+      color: var(--muted);
+    }
+
+    .social a:hover {
+      color: var(--accent);
+    }.hero {
+  display: flex;
+  justify-content: center;
+}.hero-form {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-form .input {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 15px;
+  min-width: 260px;
+}
+
+.hero-form .input::placeholder {
+  color: rgba(255,255,255,0.4);
+}.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero > div {
+  max-width: 600px; /* zelfde breedte als tekst */
+  text-align: center;
+}
+
+.hero-form {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px; /* uitlijnen met tekst */
+}
+
+.hero-form .input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 16px;
+}
+
+.hero-form .input::placeholder {
+  color: rgba(255,255,255,0.4);
+}.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero > div {
+  max-width: 800px;   /* breedte van de tekstkolom */
+  width: 100%;
+  text-align: center; /* tekst centreren */
+}.hero > div {
+  max-width: 800px;   /* was 600px → nu breder */
+  width: 100%;
+  text-align: center;
+}
+
+.hero-form {
+  max-width: 700px;   /* matcht nu met de headline */
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.hero-form .input {
+  flex: 1;
+  padding: 16px 20px; /* iets meer padding voor premium look */
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}.hero h1 {
+  font-size: 42px;        /* groter en krachtiger */
+  line-height: 1.2;
+  font-weight: 700;
+  max-width: 900px;       /* iets breder voor mooiere regelafbreking */
+  margin: 0 auto 20px;
+}.hero-form {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 700px; /* matched met je hero-tekst */
+}
+
+.hero-form .input {
+  flex: 1;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 16px;
+}
+
+.hero-form .input::placeholder {
+  color: rgba(255,255,255,0.4);
+}.reviews-wrapper {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.reviews-track {
+  display: flex;        /* DIT zorgt dat ze naast elkaar komen */
+  gap: 20px;
+  will-change: transform;
+}
+
+.review-card {
+  min-width: 280px;     /* Breedte van elke review */
+  padding: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #cbd5e1;
+}.reviews-wrapper {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 16px;
+  will-change: transform;
+}
+
+.review-card {
+  min-width: 280px;
+  padding: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #cbd5e1;
+}
+  </style>
+</head>
+<body>
+ <!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketingkits.nl – Marketingkits voor startende zzp’ers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <div class="logo">
+        <div class="logo-mark">M</div>
+        <div>
+          <div class="logo-text-main">Marketingkits.nl</div>
+          <div class="logo-text-sub">Marketingkits voor startende zzp’ers</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#lead">Gratis gids</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="badge">
+            <span>⚡</span> Binnen 30 minuten een marketingbasis
+          </div>
+
+          <h1>
+            De <span>marketingkit</span> voor startende ondernemers<br />
+            die snel zichtbaar willen worden.
+          </h1>
+
+          <p class="hero-sub">
+            Geen gedoe, geen marketingstress. Gewoon een duidelijke basis waarmee je vandaag nog zichtbaar wordt.
+          </p>
+
+          <ul class="hero-list">
+            <li>Direct toepasbare strategie & contentideeën</li>
+<li>Doelgroepformule</li>
+<li>Boodschapformule</li>
+<li>5 Directe contentideeën</li>
+<li>3 Kant-en-Klare caprions</li>
+<li>5 Hooks voor reels</li>
+<li>Direct uitvoerbare checklist</li>
+          </ul>
+<form
+  id="hero-form"
+  class="hero-form"
+  action="https://formspree.io/f/xwvndypg"
+  method="POST"
+>
+  <input 
+    type="email" 
+    name="email" 
+    class="input"
+    placeholder="jouw@emailadres.nl"
+    required
+  />
+  <button type="submit" class="btn btn-primary">
+    Ontvang de gratis gids
+  </button>
+</form>
+<p id="success-message" style="display:none; margin-top:10px; color:green;">
+  Check je inbox! Je ontvangt zo de gratis gids.
+</p>
+
+<p id="error-message" style="display:none; margin-top:10px; color:red;">
+  Er ging iets mis. Probeer het later opnieuw.
+</p>
+<div class="hero-note">
+            Geen abonnement. Directe toegang.
+          </div>
+        </div>
+
+              </section>
+
+      <!-- REVIEWS -->
+      <section class="section" id="reviews">
+        <h2>Reviews van gebruikers</h2>
+        <p>Wat andere beginnende ondernemers zeggen over de Marketingkit.</p>
+<div class="reviews-wrapper">
+  <div class="reviews-track">
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Lotte van Dijk</h3>
+      <div class="meta">Freelance Fotograaf · jan 2026</div>
+      <p>"Binnen één uur had ik mijn hele contentweek klaarstaan. Dit had ik veel eerder moeten hebben."</p>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Jeroen Meijer</h3>
+      <div class="meta">Mindset Coach · feb 2026</div>
+      <p>"De doelgroepformule en captions hebben me enorm geholpen. Ik kreeg dezelfde week nog 3 nieuwe leads."</p>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Sanne Koster</h3>
+      <div class="meta">Virtual Assistant · feb 2026</div>
+      <p>"Heel praktisch en geen onnodige theorie. De templates besparen me elke week tijd."</p>
+    </div>
+
+    <!-- EXTRA REVIEWS -->
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Mark de Bruin</h3>
+      <div class="meta">Personal Trainer · mrt 2026</div>
+      <p>"Ik heb eindelijk structuur in mijn content. Mijn Instagram groeit nu elke week."</p>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Eva Janssen</h3>
+      <div class="meta">Social Media Manager · feb 2026</div>
+      <p>"De templates zijn zó duidelijk. Ik maak nu 10 posts in de tijd dat ik er eerst 2 maakte."</p>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Tom Verbeek</h3>
+      <div class="meta">Webdesigner · jan 2026</div>
+      <p>"De Marketingkit heeft me geholpen om eindelijk consistent zichtbaar te zijn."</p>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Romy van Leeuwen</h3>
+      <div class="meta">Copywriter · feb 2026</div>
+      <p>"De captions zijn goud waard. Mijn engagement is verdubbeld."</p>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <h3>Bas Willems</h3>
+      <div class="meta">Marketing Consultant · mrt 2026</div>
+      <p>"Ik gebruik de kit nu voor al mijn klanten. Scheelt me uren per week."</p>
+    </div>
+
+  </div>
+</div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Marketingkits.nl – voor startende zzp’ers</div>
+      <div class="social">
+        <span>Volg:</span>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".reviews-wrapper");
+  const track = document.querySelector(".reviews-track");
+
+  if (!wrapper || !track) return;
+
+  // Clone track
+  const clone = track.cloneNode(true);
+  wrapper.appendChild(clone);
+
+  let offset = 0;
+
+  function loop() {
+    const width = track.scrollWidth;
+
+    offset -= 0.; // snelheid
+
+    if (Math.abs(offset) >= width) {
+      offset = 0;
+    }
+
+    track.style.transform = `translateX(${offset}px)`;
+    clone.style.transform = `translateX(${offset + width}px)`;
+
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+});
+</script><script>
+  const form = document.getElementById('hero-form');
+  const success = document.getElementById('success-message');
+  const errorMsg = document.getElementById('error-message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // blijf op dezelfde pagina
+
+    success.style.display = 'none';
+    errorMsg.style.display = 'none';
+
+    const data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        success.style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      errorMsg.style.display = 'block';
+    });
+  });
+</script></body>
+</html>
